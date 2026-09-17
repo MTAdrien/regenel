@@ -1,0 +1,113 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: box-shadow var(--transition-normal) ease;
+}
+
+.navbar.is-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.navbar-brand .logo {
+  height: calc(var(--navbar-height) - var(--spacing-md));
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-toggler {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  padding: var(--spacing-xxs);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+.navbar-toggler-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-deep-green);
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-slow) ease-in-out, opacity var(--transition-slow) ease-in-out;
+}
+
+.navbar-toggler.is-open .navbar-toggler-bar:first-child {
+  transform: translateY(8px);
+  opacity: 0;
+}
+
+.navbar-toggler.is-open .navbar-toggler-bar:last-child {
+  transform: translateY(-8px);
+  opacity: 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding: var(--spacing-md) 0 0;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-medium);
+  font-size: var(--body-size);
+  color: var(--link-color);
+  transition: color var(--transition-fast) ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--link-hover);
+}
+
+.nav-link.active {
+  color: var(--color-deep-green);
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    flex-direction: row;
+    padding-top: 0;
+    gap: var(--spacing-lg);
+  }
+}
