@@ -1,7 +1,49 @@
-/* Config */
 @import url("config/variables.css");
+@import url("components/navbar.css");
 
-/* Pages */
 @import url("pages/home.css");
 @import url("pages/about.css");
 @import url("pages/pricing.css");
+
+main {
+  padding-top: var(--navbar-height);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--body-size);
+  font-weight: var(--weight-light);
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-secondary);
+  font-weight: var(--weight-regular);
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-style: italic;
+}
+
+h1 {
+  font-size: var(--h1-size);
+}
+
+h2 {
+  font-size: var(--h2-size);
+}
+
+h3 {
+  font-size: var(--h3-size);
+}
+
+p {
+  margin: 0;
+}

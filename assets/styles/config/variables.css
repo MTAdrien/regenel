@@ -1,0 +1,119 @@
+:root {
+
+  --color-green-water: #a8c1b5;
+  --color-green-water-dark: #8fb1a2;
+  --color-light-background: #eef6f2;
+  --color-deep-green: #2c4a40;
+  --color-shell: #e8d5c0;
+  --color-dark-shell: #dcc4aa;
+  --color-ivory: #f8f8f6;
+  --color-border-light: #d9e2dd;
+  --color-border-dark: #c8d8d1;
+  --color-focus-border-rest: #d4e6de;
+
+  --background-primary: var(--color-ivory);
+  --background-secondary: var(--color-light-background);
+  --background-card: var(--color-ivory);
+  --background-card-secondary: var(--color-border-dark);
+  --background-tarifs-card: var(--color-deep-green);
+  --background-cta: var(--color-shell);
+  --background-accent: var(--color-green-water);
+  --background-carousel: var(--color-deep-green);
+
+  --text-primary: var(--color-deep-green);
+  --text-secondary: #5f746c;
+  --text-carousel: var(--color-green-water);
+  --text-tarifs-card: var(--color-ivory);
+  --text-muted: #8d9a95;
+  --text-button-primary: var(--color-ivory);
+  --text-label: var(--color-green-water);
+
+  --border-primary: var(--color-border-light);
+  --border-secondary: var(--color-border-dark);
+  --border-focus-rest: var(--color-focus-border-rest);
+
+  --button-primary: var(--color-deep-green);
+  --button-primary-hover: #23392f;
+  --button-primary-alt: var(--color-green-water);
+  --button-primary-alt-hover: var(--color-green-water-dark);
+  --button-secondary: var(--color-shell);
+  --button-secondary-hover: var(--color-dark-shell);
+
+  --logo-color: var(--color-green-water);
+
+  --link-color: var(--color-green-water);
+  --link-hover: var(--color-green-water-dark);
+
+  --success-color: var(--background-accent);
+  --focus-color: var(--color-green-water);
+
+  --font-primary: "Jost", sans-serif;
+  --font-secondary: "Cormorant Garamond", serif;
+
+  --weight-thin: 200;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+
+  --h1-size: 2rem;
+  --h2-size: 1.625rem;
+  --h3-size: 1.25rem;
+  --body-size: 1.1rem;
+  --small-size: 0.75rem;
+  --label-size: 0.5625rem;
+  --subtitle-size: 0.8125rem;
+  --caption-size: 0.6875rem;
+  --button-size: 0.6875rem;
+  --quote-size: 1.25rem;
+
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 80px;
+
+  --radius-sm: 2px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 1px 12px rgba(44, 74, 64, 0.08);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.18);
+
+  --transition-fast: 150ms;
+  --transition-normal: 200ms;
+  --transition-slow: 300ms;
+  --transition-reveal: 800ms;
+
+  --navbar-height: 100px;
+  --container-width: 100%;
+  --container-lg-width: 100%;
+  --gutter: 20px;
+  --card-width: 100%;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --h1-size: 2.75rem;
+    --h2-size: 2rem;
+    --h3-size: 1.375rem;
+
+    --navbar-height: 120px;
+    --container-width: 900px;
+    --gutter: 40px;
+    --card-width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --h1-size: 3.25rem;
+    --h2-size: 2.25rem;
+    --h3-size: 1.5rem;
+
+    --navbar-height: 140px;
+    --container-lg-width: 1500px;
+  }
+}
