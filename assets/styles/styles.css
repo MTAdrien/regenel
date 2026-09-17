@@ -9,6 +9,24 @@ main {
   padding-top: var(--navbar-height);
 }
 
+.container-lg {
+  width: 100%;
+  max-width: var(--container-lg-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+[data-controller="reveal"] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--transition-reveal) ease, transform var(--transition-reveal) ease;
+}
+
+[data-controller="reveal"].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 body {
   margin: 0;
   font-family: var(--font-primary);
@@ -38,6 +56,7 @@ h1 {
 
 h2 {
   font-size: var(--h2-size);
+  text-align: center;
 }
 
 h3 {
