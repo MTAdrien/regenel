@@ -127,6 +127,73 @@
                 </div>
             </div>
         </section>
+        <section class="gallery">
+            <div class="container-lg">
+                <h2>Les résultats parlent d'eux-mêmes</h2>
+                <div class="gallery-intro">
+                    <p>Chaque résultat présenté ici a été obtenu dans le cadre du protocole RegenX®, sur des personnes avec lesquelles j'ai travaillé, hommes et femmes, toutes zones confondues. Les transformations sont réelles, non retouchées et documentées par mes soins au fil des séances.</p>
+                </div>
+                <div class="result-carousel" data-controller="carousel"
+                     data-carousel-desktop-visible-value="3"
+                     data-carousel-mobile-visible-value="1"
+                     data-carousel-autoplay-delay-value="5000"
+                     data-action="resize@window->carousel#sync keydown.right@window->carousel#next keydown.left@window->carousel#previous">
+                    <button class="carousel-btn carousel-btn-prev" type="button" data-carousel-target="prevButton" data-action="carousel#previous" aria-label="Résultat précédent">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-viewport" data-action="mouseenter->carousel#stopAutoplay mouseleave->carousel#startAutoplay touchstart->carousel#touchStart touchend->carousel#touchEnd">
+                        <div class="carousel-track" data-carousel-target="track">
+                            <div class="result-card" data-carousel-target="item">
+                                <figure><img src="assets/images/avant-apres-001.jpg" alt="Avant/après reconstruction capillaire, cuir chevelu, ligne frontale"></figure>
+                                <div class="result-caption">
+                                    <span class="result-zone">Cuir chevelu — ligne frontale</span>
+                                    <p class="result-observation">Densité visiblement renforcée le long de la ligne d'implantation après seulement 2 séances.</p>
+                                </div>
+                            </div>
+                            <div class="result-card" data-carousel-target="item">
+                                <figure><img src="assets/images/avant-apres-002.jpg" alt="Avant/après reconstruction capillaire, barbe"></figure>
+                                <div class="result-caption">
+                                    <span class="result-zone">Barbe</span>
+                                    <p class="result-observation">Repousse plus dense et homogène sur la mâchoire après 3 séances.</p>
+                                </div>
+                            </div>
+                            <div class="result-card" data-carousel-target="item">
+                                <figure><img src="assets/images/avant-apres-003.jpg" alt="Avant/après reconstruction capillaire, cuir chevelu, vertex"></figure>
+                                <div class="result-caption">
+                                    <span class="result-zone">Cuir chevelu — vertex</span>
+                                    <p class="result-observation">Couverture nettement améliorée au sommet du crâne après 4 séances.</p>
+                                </div>
+                            </div>
+                            <div class="result-card" data-carousel-target="item">
+                                <figure><img src="assets/images/avant-apres-004.jpg" alt="Avant/après reconstruction capillaire, cuir chevelu"></figure>
+                                <div class="result-caption">
+                                    <span class="result-zone">Cuir chevelu</span>
+                                    <p class="result-observation">Premiers signes de densification visibles dès 2 séances.</p>
+                                </div>
+                            </div>
+                            <div class="result-card" data-carousel-target="item">
+                                <figure><img src="assets/images/avant-apres-005.jpg" alt="Avant/après reconstruction capillaire, sourcils"></figure>
+                                <div class="result-caption">
+                                    <span class="result-zone">Sourcils</span>
+                                    <p class="result-observation">Sourcils plus fournis et mieux dessinés après 3 séances.</p>
+                                </div>
+                            </div>
+                            <div class="result-card" data-carousel-target="item">
+                                <figure><img src="assets/images/avant-apres-006.jpg" alt="Avant/après reconstruction capillaire, barbe"></figure>
+                                <div class="result-caption">
+                                    <span class="result-zone">Barbe</span>
+                                    <p class="result-observation">Densité renforcée sur la zone des joues après 4 séances.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-btn-next" type="button" data-carousel-target="nextButton" data-action="carousel#next" aria-label="Résultat suivant">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+                <p class="gallery-legend">Chaque photo est publiée avec l'accord explicite de la personne concernée.</p>
+            </div>
+        </section>
     </main>
     <footer>
     </footer>

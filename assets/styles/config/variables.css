@@ -18,7 +18,7 @@
   --background-tarifs-card: var(--color-deep-green);
   --background-cta: var(--color-shell);
   --background-accent: var(--color-green-water);
-  --background-carousel: var(--color-deep-green);
+  --background-carousel: var(--color-green-water);
 
   --text-primary: var(--color-deep-green);
   --text-secondary: #5f746c;
@@ -36,8 +36,8 @@
   --button-primary-hover: #23392f;
   --button-primary-alt: var(--color-green-water);
   --button-primary-alt-hover: var(--color-green-water-dark);
-  --button-secondary: var(--color-shell);
-  --button-secondary-hover: var(--color-dark-shell);
+  --button-secondary: var(--color-ivory);
+  --button-secondary-hover: var(--color-shell);
 
   --logo-color: var(--color-green-water);
 
