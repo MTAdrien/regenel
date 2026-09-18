@@ -171,10 +171,18 @@
   padding-block: var(--spacing-xxl);
 }
 
+.gallery h2 {
+  color: var(--text-tarifs-card);
+}
+
 .gallery-intro {
   max-width: 640px;
   margin: var(--spacing-md) auto 0;
   text-align: center;
+}
+
+.gallery-intro p {
+  color: var(--text-tarifs-card);
 }
 
 .result-carousel {
@@ -272,6 +280,7 @@
   margin-top: var(--spacing-lg);
   font-style: italic;
   font-size: var(--caption-size);
+  color: var(--text-tarifs-card);
   text-align: center;
 }
 
@@ -283,6 +292,7 @@
 
 .gallery-cta {
   margin-top: var(--spacing-xl);
+  text-align: center;
 }
 
 .btn-secondary {
