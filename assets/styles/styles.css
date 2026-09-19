@@ -31,6 +31,19 @@ main {
   transform: translateY(0);
 }
 
+[data-controller="reveal"].reveal-left {
+  transform: translateX(-40px);
+}
+
+[data-controller="reveal"].reveal-right {
+  transform: translateX(40px);
+}
+
+[data-controller="reveal"].reveal-left.is-visible,
+[data-controller="reveal"].reveal-right.is-visible {
+  transform: translateX(0);
+}
+
 body {
   margin: 0;
   font-family: var(--font-primary);
