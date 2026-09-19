@@ -7,13 +7,35 @@
   height: var(--navbar-height);
   display: flex;
   align-items: center;
-  background-color: transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transition: box-shadow var(--transition-normal) ease;
 }
 
 .navbar.is-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar-backdrop {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: opacity var(--transition-fast) ease;
+}
+
+.navbar-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
   box-shadow: var(--shadow-md);
 }
 
@@ -78,6 +100,7 @@
 }
 
 .nav-links {
+  --bs-navbar-active-color: var(--color-deep-green);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,7 +124,8 @@
 }
 
 .nav-link.active {
-  color: var(--color-deep-green);
+  background-color: var(--color-shell);
+  padding: 4px;
 }
 
 @media (min-width: 768px) {

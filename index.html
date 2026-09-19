@@ -16,8 +16,9 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md" data-controller="navbar" data-action="scroll@window->navbar#onScroll">
+    <header data-controller="navbar" data-action="scroll@window->navbar#onScroll">
+        <div class="navbar-backdrop" data-navbar-target="backdrop"></div>
+        <nav class="navbar navbar-expand-md" data-navbar-target="nav">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img src="assets/images/regenel-logo.jpg" alt="Regenel — Reconstruction capillaire" class="logo">
@@ -27,7 +28,7 @@
                     <span class="navbar-toggler-bar"></span>
                     <span class="navbar-toggler-bar"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navMenu" data-action="shown.bs.collapse->navbar#onShown hidden.bs.collapse->navbar#onHidden">
+                <div class="collapse navbar-collapse" id="navMenu" data-navbar-target="collapse" data-action="shown.bs.collapse->navbar#onShown hidden.bs.collapse->navbar#onHidden">
                     <ul class="navbar-nav nav-links">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Accueil</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">À propos</a></li>

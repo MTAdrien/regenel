@@ -42,8 +42,8 @@
 
   --logo-color: var(--color-green-water);
 
-  --link-color: var(--color-green-water);
-  --link-hover: var(--color-green-water-dark);
+  --link-color: var(--color-green-water-dark);
+  --link-hover: var(--color-green-water);
 
   --success-color: var(--background-accent);
   --focus-color: var(--color-green-water);
@@ -79,7 +79,7 @@
   --radius-md: 10px;
   --radius-lg: 12px;
 
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 1px 12px rgba(44, 74, 64, 0.08);
   --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.18);
 
