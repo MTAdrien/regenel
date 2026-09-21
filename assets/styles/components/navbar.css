@@ -19,7 +19,7 @@
 
 .navbar-backdrop {
   position: fixed;
-  top: var(--navbar-height);
+  top: 0;
   left: 0;
   right: 0;
   height: 0;
@@ -30,7 +30,7 @@
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  transition: opacity var(--transition-fast) ease;
+  transition: opacity 350ms ease;
 }
 
 .navbar-backdrop.is-visible {
