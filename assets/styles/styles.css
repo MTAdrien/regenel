@@ -44,6 +44,10 @@ main {
   transform: translateX(0);
 }
 
+[data-controller="reveal"].reveal-fade {
+  transform: none;
+}
+
 body {
   margin: 0;
   font-family: var(--font-primary);
