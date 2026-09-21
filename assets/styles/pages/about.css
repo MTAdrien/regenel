@@ -1,12 +1,12 @@
 .about-section {
-  padding-block: var(--spacing-xxl);
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-xxl);
 }
 
 .about-grid {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: var(--spacing-lg);
 }
 
 .about-reveal-group {
