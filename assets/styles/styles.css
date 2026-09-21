@@ -48,6 +48,14 @@ main {
   transform: none;
 }
 
+[data-controller="reveal"].reveal-zoom {
+  transform: scale(0.9);
+}
+
+[data-controller="reveal"].reveal-zoom.is-visible {
+  transform: scale(1);
+}
+
 body {
   margin: 0;
   font-family: var(--font-primary);
