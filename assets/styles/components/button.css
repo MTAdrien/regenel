@@ -1,5 +1,6 @@
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-success {
   --bs-btn-font-family: var(--font-primary);
   --bs-btn-font-weight: var(--weight-medium);
   --bs-btn-font-size: var(--button-size);
@@ -16,7 +17,9 @@
 .btn-primary:hover,
 .btn-primary:focus-visible,
 .btn-secondary:hover,
-.btn-secondary:focus-visible {
+.btn-secondary:focus-visible,
+.btn-success:hover,
+.btn-success:focus-visible {
   transform: translateY(-2px);
 }
 
@@ -43,5 +46,18 @@
   --bs-btn-active-color: var(--text-button-secondary);
   --bs-btn-active-bg: var(--button-secondary-hover);
   --bs-btn-active-border-color: var(--button-secondary-hover);
+  --bs-btn-focus-shadow-rgb: 44, 74, 64;
+}
+
+.btn-success {
+  --bs-btn-color: var(--text-button-primary);
+  --bs-btn-bg: var(--button-success);
+  --bs-btn-border-color: var(--button-success);
+  --bs-btn-hover-color: var(--text-button-primary);
+  --bs-btn-hover-bg: var(--button-success-hover);
+  --bs-btn-hover-border-color: var(--button-success-hover);
+  --bs-btn-active-color: var(--text-button-secondary);
+  --bs-btn-active-bg: var(--button-success-hover);
+  --bs-btn-active-border-color: var(--button-success-hover);
   --bs-btn-focus-shadow-rgb: 44, 74, 64;
 }

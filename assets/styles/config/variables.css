@@ -35,10 +35,10 @@
 
   --button-primary: var(--color-deep-green);
   --button-primary-hover: #23392f;
-  --button-primary-alt: var(--color-green-water);
-  --button-primary-alt-hover: var(--color-green-water-dark);
   --button-secondary: var(--color-ivory);
   --button-secondary-hover: var(--color-shell);
+  --button-success: var(--color-green-water-dark);
+  --button-success-hover: var(--color-green-water);
 
   --logo-color: var(--color-green-water);
 
