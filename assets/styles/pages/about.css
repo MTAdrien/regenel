@@ -1,6 +1,6 @@
 .about-section {
   padding-top: var(--spacing-lg);
-  padding-bottom: var(--spacing-xxl);
+  padding-bottom: var(--spacing-lg);
 }
 
 .about-grid {
@@ -63,7 +63,7 @@
 
 .founder {
   padding-top: var(--spacing-lg);
-  padding-bottom: var(--spacing-xxl);
+  padding-bottom: var(--spacing-lg);
 }
 
 .founder h2 {
@@ -114,7 +114,8 @@
 }
 
 .contact-section {
-  padding-block: var(--spacing-xxl);
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
 }
 
 .contact-section h2 {
