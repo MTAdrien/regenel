@@ -1,0 +1,31 @@
+.tarifs-section {
+  padding-block: var(--spacing-lg);
+}
+
+.tarifs-section h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.tarifs-card {
+  max-width: var(--card-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  background-color: var(--background-tarifs-card);
+  color: var(--text-tarifs-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+}
+
+.legend {
+  margin-top: var(--spacing-md);
+  font-size: var(--caption-size);
+  font-style: italic;
+}
+
+.tarifs-cta {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
