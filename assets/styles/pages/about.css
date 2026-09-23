@@ -112,3 +112,16 @@
     flex-shrink: 0;
   }
 }
+
+.faq-section {
+  padding-block: var(--spacing-lg);
+}
+
+.faq-section h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.faq-section .accordion {
+  max-width: 900px;
+  margin-inline: auto;
+}
