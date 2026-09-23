@@ -1,0 +1,20 @@
+.accordion {
+  --bs-accordion-color: var(--text-primary);
+  --bs-accordion-bg: var(--background-card);
+  --bs-accordion-border-color: var(--border-primary);
+  --bs-accordion-border-radius: var(--radius-md);
+  --bs-accordion-inner-border-radius: var(--radius-md);
+  --bs-accordion-btn-color: var(--text-primary);
+  --bs-accordion-btn-bg: var(--background-card);
+  --bs-accordion-active-color: var(--text-primary);
+  --bs-accordion-active-bg: var(--background-card-secondary);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem var(--border-focus-rest);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.accordion-button {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-medium);
+}
