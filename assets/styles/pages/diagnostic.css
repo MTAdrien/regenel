@@ -1,0 +1,74 @@
+.diagnostic-section {
+  padding-block: var(--spacing-lg);
+  text-align: center;
+}
+
+.diagnostic-intro {
+  max-width: 60ch;
+  margin: var(--spacing-sm) auto 0;
+  color: var(--text-secondary);
+  text-wrap: balance;
+}
+
+.diagnostic-card {
+  max-width: 720px;
+  margin: var(--spacing-lg) auto 0;
+  padding: var(--spacing-lg);
+  gap: var(--spacing-md);
+}
+
+.diagnostic-card h2:focus {
+  outline: none;
+}
+
+.diagnostic-answers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+
+.diagnostic-text-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.diagnostic-back {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--text-secondary);
+  font-size: var(--subtitle-size);
+}
+
+.diagnostic-back:disabled {
+  visibility: hidden;
+}
+
+.diagnostic-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding-left: var(--spacing-md);
+  text-align: left;
+}
+
+.diagnostic-summary-list strong {
+  font-weight: var(--weight-medium);
+}
+
+@media (min-width: 768px) {
+  .diagnostic-answers {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .diagnostic-text-form {
+    flex-direction: row;
+  }
+
+  .diagnostic-text-form .form-control {
+    flex: 1;
+  }
+}

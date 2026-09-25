@@ -80,11 +80,7 @@
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="diagnostic.html"
-                  >Diagnostic</a
-                >
+                  class="nav-link active" aria-current="page" href="diagnostic.html">Diagnostic</a>
               </li>
             </ul>
             <div class="nav-contact">
@@ -131,6 +127,84 @@
       </nav>
     </header>
     <main>
+      <section class="diagnostic-section" data-controller="diagnostic">
+        <div class="container-lg">
+          <h1>Bienvenue !</h1>
+          <p class="diagnostic-intro">
+            Ce questionnaire est la première étape vers une prise en charge
+            personnalisée. Il me permet de comprendre ta situation avant un
+            premier échange en visio et de t'apporter les réponses les plus
+            justes possibles. Toutes tes réponses restent strictement confidentielles.
+          </p>
+          <div
+            class="card card-primary diagnostic-card"
+            data-diagnostic-target="card"
+          >
+            <div aria-live="polite">
+              <h2
+                id="diagnostic-question"
+                tabindex="-1"
+                data-diagnostic-target="question"
+              ></h2>
+            </div>
+            <div
+              class="diagnostic-answers"
+              data-diagnostic-target="answers"
+            ></div>
+            <form
+              class="diagnostic-text-form"
+              data-diagnostic-target="textForm"
+              data-action="submit->diagnostic#submitText"
+              hidden
+            >
+              <input
+                type="text"
+                class="form-control"
+                aria-labelledby="diagnostic-question"
+                data-diagnostic-target="textInput"
+                required
+              />
+              <button type="submit" class="btn btn-primary">Suivant</button>
+            </form>
+            <template data-diagnostic-target="answerTemplate">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-action="diagnostic#choose"
+              ></button>
+            </template>
+            <button
+              type="button"
+              class="diagnostic-back"
+              data-diagnostic-target="backButton"
+              data-action="diagnostic#back"
+            >
+              <i class="fa-solid fa-arrow-left"></i> Précédent
+            </button>
+          </div>
+          <div
+            class="card card-primary diagnostic-card"
+            data-diagnostic-target="summary"
+            hidden
+          >
+            <h2>Récapitulatif de vos réponses</h2>
+            <ol
+              class="diagnostic-summary-list"
+              data-diagnostic-target="summaryList"
+            ></ol>
+            <p class="legend">
+              L'envoi de vos réponses sera bientôt disponible.
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-action="diagnostic#restart"
+            >
+              Recommencer
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="footer">
       <div class="container-lg">
