@@ -146,15 +146,20 @@
                 tabindex="-1"
                 data-diagnostic-target="question"
               ></h2>
+              <p
+                class="diagnostic-hint"
+                data-diagnostic-target="hint"
+                hidden
+              ></p>
             </div>
             <div
               class="diagnostic-answers"
               data-diagnostic-target="answers"
             ></div>
             <form
-              class="diagnostic-text-form"
-              data-diagnostic-target="textForm"
-              data-action="submit->diagnostic#submitText"
+              class="diagnostic-form"
+              data-diagnostic-target="form"
+              data-action="submit->diagnostic#submit"
               hidden
             >
               <input
@@ -162,6 +167,27 @@
                 class="form-control"
                 aria-labelledby="diagnostic-question"
                 data-diagnostic-target="textInput"
+                required
+              />
+              <textarea
+                class="form-control"
+                rows="4"
+                aria-labelledby="diagnostic-question"
+                data-diagnostic-target="textArea"
+                required
+              ></textarea>
+              <div
+                class="diagnostic-choices"
+                role="group"
+                aria-labelledby="diagnostic-question"
+                data-diagnostic-target="choices"
+              ></div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Précise ta réponse"
+                aria-label="Précise ta réponse"
+                data-diagnostic-target="otherInput"
                 required
               />
               <button type="submit" class="btn btn-primary">Suivant</button>
@@ -172,6 +198,43 @@
                 class="btn btn-secondary"
                 data-action="diagnostic#choose"
               ></button>
+            </template>
+            <template data-diagnostic-target="imageAnswerTemplate">
+              <button
+                type="button"
+                class="diagnostic-image-answer"
+                data-action="diagnostic#choose"
+              >
+                <img src="" alt="" loading="lazy" />
+                <span></span>
+              </button>
+            </template>
+            <template data-diagnostic-target="imageCheckboxTemplate">
+              <div class="diagnostic-choice">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  autocomplete="off"
+                  data-diagnostic-target="choiceInput"
+                  data-action="change->diagnostic#toggleChoice"
+                />
+                <label class="diagnostic-image-answer">
+                  <img src="" alt="" loading="lazy" />
+                  <span></span>
+                </label>
+              </div>
+            </template>
+            <template data-diagnostic-target="checkboxTemplate">
+              <div class="diagnostic-choice">
+                <input
+                  type="checkbox"
+                  class="btn-check"
+                  autocomplete="off"
+                  data-diagnostic-target="choiceInput"
+                  data-action="change->diagnostic#toggleChoice"
+                />
+                <label class="btn btn-secondary"></label>
+              </div>
             </template>
             <button
               type="button"
