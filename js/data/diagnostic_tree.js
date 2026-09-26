@@ -1,7 +1,7 @@
 export const START = "prenom";
 
 const ZONE_HINT = "Choix multiple possible s'il s'agit de plusieurs zones différentes.";
-const IMAGES = "assets/images";
+const IMAGES = "https://res.cloudinary.com/uwqsnkse/image/upload/f_auto,q_auto,c_limit,w_480";
 
 export const QUESTIONS = {
   prenom: {
@@ -54,11 +54,11 @@ export const QUESTIONS = {
     hint: ZONE_HINT,
     type: "multiple",
     answers: [
-      { label: "Ligne frontale", image: `${IMAGES}/homme-ligne-frontale.webp` },
-      { label: "Golfes temporaux", image: `${IMAGES}/homme-golfes-temporaux.webp` },
-      { label: "Toupet", image: `${IMAGES}/homme-toupet.webp` },
-      { label: "Vertex", image: `${IMAGES}/homme-vertex.webp` },
-      { label: "Couronne", image: `${IMAGES}/homme-couronne.webp`, exclusive: true },
+      { label: "Ligne frontale", image: `${IMAGES}/homme-ligne-frontale` },
+      { label: "Golfes temporaux", image: `${IMAGES}/homme-golfes-temporaux` },
+      { label: "Toupet", image: `${IMAGES}/homme-toupet` },
+      { label: "Vertex", image: `${IMAGES}/homme-vertex` },
+      { label: "Couronne", image: `${IMAGES}/homme-couronne`, exclusive: true },
     ],
     next: "end",
   },
@@ -68,10 +68,10 @@ export const QUESTIONS = {
     hint: ZONE_HINT,
     type: "multiple",
     answers: [
-      { label: "Barbe complète", image: `${IMAGES}/barbe-complete.webp`, exclusive: true },
-      { label: "Joues", image: `${IMAGES}/barbe-joue.webp` },
-      { label: "Bouc", image: `${IMAGES}/barbe-bouc.webp` },
-      { label: "Moustache", image: `${IMAGES}/barbe-moustache.webp` },
+      { label: "Barbe complète", image: `${IMAGES}/barbe-complete`, exclusive: true },
+      { label: "Joues", image: `${IMAGES}/barbe-joue` },
+      { label: "Bouc", image: `${IMAGES}/barbe-bouc` },
+      { label: "Moustache", image: `${IMAGES}/barbe-moustache` },
     ],
     next: "end",
   },
@@ -80,9 +80,9 @@ export const QUESTIONS = {
     textProche: "Comment décrirais-tu la perte de cheveux de {proche} ?",
     type: "image",
     answers: [
-      { label: "Perte légère", image: `${IMAGES}/alopecie-stade1.webp`, next: "end" },
-      { label: "Perte moyenne", image: `${IMAGES}/alopecie-stade2.webp`, next: "end" },
-      { label: "Forte perte", image: `${IMAGES}/alopecie-stade3.webp`, next: "end" },
+      { label: "Perte légère", image: `${IMAGES}/alopecie-stade1`, next: "end" },
+      { label: "Perte moyenne", image: `${IMAGES}/alopecie-stade2`, next: "end" },
+      { label: "Forte perte", image: `${IMAGES}/alopecie-stade3`, next: "end" },
     ],
   },
   sourcils: {
@@ -91,7 +91,7 @@ export const QUESTIONS = {
     type: "image",
     answers: [1, 2, 3, 4, 5].map((stade) => ({
       label: `Stade ${stade}`,
-      image: `${IMAGES}/sourcils-stade${stade}.webp`,
+      image: `${IMAGES}/sourcils-stade${stade}`,
       next: "end",
     })),
   },
