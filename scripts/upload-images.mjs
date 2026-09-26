@@ -5,9 +5,9 @@ import { homedir } from "node:os";
 import { basename, extname, join } from "node:path";
 import { v2 as cloudinary } from "cloudinary";
 
-const LOCAL_IMAGES = "assets/images";
-
-const DIAGNOSTIC_ORIGINALS = join(homedir(), "regenel-originaux", "diagnostic");
+// Les images ne sont plus dans le repo : on envoie les originaux haute définition gardés en local.
+const ORIGINALS = join(homedir(), "regenel-originaux");
+const SOURCE_DIRECTORIES = ["site", "diagnostic"].map((directory) => join(ORIGINALS, directory));
 const IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
 
 cloudinary.config({ secure: true });
@@ -23,10 +23,7 @@ async function listImages(directory) {
 }
 
 async function collectSources() {
-  const originals = await listImages(DIAGNOSTIC_ORIGINALS);
-  const originalIds = new Set(originals.map(toPublicId));
-  const locals = (await listImages(LOCAL_IMAGES)).filter((file) => !originalIds.has(toPublicId(file)));
-  return [...locals, ...originals];
+  return (await Promise.all(SOURCE_DIRECTORIES.map(listImages))).flat();
 }
 
 async function listRemote() {
