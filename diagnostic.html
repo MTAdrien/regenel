@@ -190,7 +190,23 @@
                 data-diagnostic-target="otherInput"
                 required
               />
-              <button type="submit" class="btn btn-primary">Suivant</button>
+              <div
+                class="diagnostic-uploads"
+                data-diagnostic-target="uploads"
+              ></div>
+              <p
+                class="diagnostic-error"
+                role="alert"
+                data-diagnostic-target="uploadError"
+                hidden
+              ></p>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-diagnostic-target="submitButton"
+              >
+                Suivant
+              </button>
             </form>
             <template data-diagnostic-target="answerTemplate">
               <button
@@ -198,6 +214,19 @@
                 class="btn btn-secondary"
                 data-action="diagnostic#choose"
               ></button>
+            </template>
+            <template data-diagnostic-target="uploadTemplate">
+              <label class="diagnostic-upload">
+                <img alt="" data-diagnostic-target="uploadPreview" hidden />
+                <span></span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  required
+                  data-diagnostic-target="uploadInput"
+                  data-action="change->diagnostic#previewUpload"
+                />
+              </label>
             </template>
             <template data-diagnostic-target="imageAnswerTemplate">
               <button

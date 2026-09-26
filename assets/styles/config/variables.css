@@ -46,6 +46,7 @@
   --link-hover: var(--color-green-water);
 
   --success-color: var(--background-accent);
+  --error-color: #a94442;
   --focus-color: var(--color-green-water);
 
   --font-primary: "Jost", sans-serif;

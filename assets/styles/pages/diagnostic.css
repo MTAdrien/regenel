@@ -84,6 +84,41 @@
   width: 100%;
 }
 
+.diagnostic-uploads {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+
+.diagnostic-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  border: 2px dashed var(--border-secondary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  min-width: 0;
+}
+
+.diagnostic-upload img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.diagnostic-upload input {
+  max-width: 100%;
+  font-size: var(--subtitle-size);
+}
+
+.diagnostic-error {
+  color: var(--error-color);
+  font-size: var(--subtitle-size);
+}
+
 .diagnostic-back {
   align-self: flex-start;
   border: none;
@@ -121,6 +156,10 @@
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 
+  .diagnostic-uploads {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .diagnostic-form {
     flex-direction: row;
     flex-wrap: wrap;
@@ -131,6 +170,8 @@
   }
 
   .diagnostic-choices,
+  .diagnostic-uploads,
+  .diagnostic-error,
   .diagnostic-form textarea.form-control {
     flex-basis: 100%;
   }

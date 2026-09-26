@@ -1,12 +1,14 @@
 import { Controller } from "https://unpkg.com/@hotwired/stimulus@3.2.2/dist/stimulus.js";
 import { START, QUESTIONS } from "../data/diagnostic_tree.js";
+import { uploadImage } from "../cloudinary.js";
 
 const OTHER_SEPARATOR = " : ";
 
 export default class extends Controller {
   static targets = [
     "card", "question", "hint", "answers", "answerTemplate", "imageAnswerTemplate", "form", "textInput", "textArea",
-    "choices", "choiceInput", "otherInput", "checkboxTemplate", "imageCheckboxTemplate", "backButton", "summary", "summaryList",
+    "choices", "choiceInput", "otherInput", "checkboxTemplate", "imageCheckboxTemplate", "uploads", "uploadTemplate", "uploadInput", "uploadPreview",
+    "uploadError", "submitButton", "backButton", "summary", "summaryList",
   ];
 
   connect() {
@@ -22,11 +24,12 @@ export default class extends Controller {
   }
 
   // En mode proche, {proche}, {Proche} et {il} s'accordent avec le genre choisi.
-  textFor(question) {
-    if (!this.isProche || !question.textProche) return question.text;
+  textFor(question, key = "text") {
+    const textProche = question[`${key}Proche`];
+    if (!this.isProche || !textProche) return question[key];
 
     const proche = this.isFeminin ? "ta proche" : "ton proche";
-    return question.textProche
+    return textProche
       .replaceAll("{proche}", proche)
       .replaceAll("{Proche}", proche[0].toUpperCase() + proche.slice(1))
       .replaceAll("{il}", this.isFeminin ? "elle" : "il");
@@ -36,24 +39,26 @@ export default class extends Controller {
     return question.multiline ? this.textAreaTarget : this.textInputTarget;
   }
 
-  show(id, previousAnswer) {
+  show(id, previous) {
     const question = QUESTIONS[id];
+    const previousAnswer = previous?.answer;
     const isText = question.type === "text";
     const isMultiple = question.type === "multiple";
     const isImage = question.type === "image";
+    const isUpload = question.type === "upload";
     const hasImages = question.answers?.some((answer) => answer.image) ?? false;
     const isInteracting = this.element.contains(document.activeElement);
     this.currentId = id;
 
     this.questionTarget.textContent = this.textFor(question);
-    this.hintTarget.textContent = question.hint ?? "";
+    this.hintTarget.textContent = this.textFor(question, "hint") ?? "";
     this.hintTarget.hidden = !question.hint;
 
-    this.answersTarget.hidden = isText || isMultiple;
+    this.answersTarget.hidden = isText || isMultiple || isUpload;
     this.answersTarget.classList.toggle("is-images", isImage);
     this.answersTarget.replaceChildren(...(this.answersTarget.hidden ? [] : question.answers.map((answer) => this.buildAnswer(answer, isImage))));
 
-    this.formTarget.hidden = !(isText || isMultiple);
+    this.formTarget.hidden = !(isText || isMultiple || isUpload);
     [this.textInputTarget, this.textAreaTarget].forEach((field) => {
       const isActive = isText && field === this.textFieldFor(question);
       field.hidden = !isActive;
@@ -72,6 +77,12 @@ export default class extends Controller {
     const otherAnswer = otherLabel && checkedAnswers.find((answer) => answer.startsWith(otherLabel + OTHER_SEPARATOR));
     this.otherInputTarget.value = otherAnswer ? otherAnswer.slice((otherLabel + OTHER_SEPARATOR).length) : "";
     this.syncOther();
+
+    this.previousUploads = previous?.uploads ?? [];
+    this.uploadsTarget.hidden = !isUpload;
+    this.uploadsTarget.replaceChildren(...(isUpload ? Array.from({ length: question.count }, (_, index) => this.buildUpload(index)) : []));
+    this.previousUploads.forEach(({ file }, index) => this.restoreUpload(index, file));
+    this.uploadErrorTarget.hidden = true;
 
     this.backButtonTarget.disabled = this.history.length === 0;
 
@@ -119,6 +130,31 @@ export default class extends Controller {
     return choice;
   }
 
+  buildUpload(index) {
+    const upload = this.uploadTemplateTarget.content.firstElementChild.cloneNode(true);
+    upload.querySelector("span").textContent = `Photo ${index + 1}`;
+    return upload;
+  }
+
+  // Au retour avec « Précédent », remet dans son champ la photo déjà choisie.
+  restoreUpload(index, file) {
+    const files = new DataTransfer();
+    files.items.add(file);
+    this.uploadInputTargets[index].files = files.files;
+    this.showPreview(index, file);
+  }
+
+  previewUpload({ target }) {
+    this.showPreview(this.uploadInputTargets.indexOf(target), target.files[0]);
+  }
+
+  showPreview(index, file) {
+    const preview = this.uploadPreviewTargets[index];
+    if (preview.src.startsWith("blob:")) URL.revokeObjectURL(preview.src);
+    preview.hidden = !file;
+    if (file) preview.src = URL.createObjectURL(file);
+  }
+
   get otherChoice() {
     return this.choiceInputTargets.find((input) => input.dataset.other === "true");
   }
@@ -149,11 +185,13 @@ export default class extends Controller {
     this.record(label, next, { proche, feminin });
   }
 
-  submit(event) {
+  async submit(event) {
     event.preventDefault();
     const question = QUESTIONS[this.currentId];
 
-    if (question.type === "multiple") {
+    if (question.type === "upload") {
+      await this.submitUploads(question);
+    } else if (question.type === "multiple") {
       const checked = this.choiceInputTargets.filter((input) => input.checked);
       if (checked.length === 0) {
         this.choiceInputTargets[0].setCustomValidity("Choisis au moins une réponse.");
@@ -180,10 +218,35 @@ export default class extends Controller {
     }
   }
 
+  // Une photo déjà envoyée avant un retour en arrière n'est pas renvoyée.
+  async submitUploads(question) {
+    const isSameFile = (a, b) => a.name === b.name && a.size === b.size && a.lastModified === b.lastModified;
+    const files = this.uploadInputTargets.map((input) => input.files[0]);
+
+    this.setUploading(true);
+    try {
+      const uploads = await Promise.all(files.map(async (file) => ({
+        file,
+        publicId: this.previousUploads.find((upload) => isSameFile(upload.file, file))?.publicId ?? await uploadImage(file),
+      })));
+      this.record(`${uploads.length} photos jointes`, question.next, { uploads });
+    } catch {
+      this.uploadErrorTarget.textContent = "L'envoi des photos a échoué, vérifie ta connexion et réessaie.";
+      this.uploadErrorTarget.hidden = false;
+    } finally {
+      this.setUploading(false);
+    }
+  }
+
+  setUploading(isUploading) {
+    this.submitButtonTarget.disabled = isUploading;
+    this.submitButtonTarget.textContent = isUploading ? "Envoi des photos…" : "Suivant";
+  }
+
   // Les questions ouvertes par un choix multiple passent avant la suite de ce choix.
   // "end" termine une branche : on reprend alors la file, puis le récapitulatif.
-  record(answer, next, { proche = false, feminin = false } = {}, branches = []) {
-    this.history.push({ id: this.currentId, answer, proche, feminin, queue: this.queue });
+  record(answer, next, details = {}, branches = []) {
+    this.history.push({ id: this.currentId, answer, proche: false, feminin: false, ...details, queue: this.queue });
 
     const [nextId, ...queue] = [...branches, next, ...this.queue].filter((id) => id !== "end");
     this.queue = queue;
@@ -199,7 +262,7 @@ export default class extends Controller {
     const previous = this.history.pop();
     if (!previous) return;
     this.queue = previous.queue;
-    this.show(previous.id, previous.answer);
+    this.show(previous.id, previous);
   }
 
   finish() {
