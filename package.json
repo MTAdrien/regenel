@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "images:list": "node --env-file=.env scripts/upload-images.mjs --list",
+    "images:upload": "node --env-file=.env scripts/upload-images.mjs"
+  },
+  "devDependencies": {
+    "cloudinary": "^2.11.0"
+  }
+}
