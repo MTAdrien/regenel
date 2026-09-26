@@ -114,6 +114,13 @@
   font-size: var(--subtitle-size);
 }
 
+.diagnostic-form .btn-primary:disabled {
+  --bs-btn-disabled-bg: var(--color-green-water);
+  --bs-btn-disabled-border-color: var(--color-green-water);
+  --bs-btn-disabled-color: var(--text-primary);
+  --bs-btn-disabled-opacity: 1;
+}
+
 .diagnostic-error {
   color: var(--error-color);
   font-size: var(--subtitle-size);
