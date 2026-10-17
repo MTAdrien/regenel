@@ -156,6 +156,15 @@
               class="diagnostic-answers"
               data-diagnostic-target="answers"
             ></div>
+            <input
+              type="text"
+              name="website"
+              class="diagnostic-honeypot"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+              data-diagnostic-target="honeypot"
+            />
             <form
               class="diagnostic-form"
               data-diagnostic-target="form"
@@ -284,12 +293,32 @@
               class="diagnostic-summary-list"
               data-diagnostic-target="summaryList"
             ></ol>
-            <p class="legend">
-              L'envoi de vos réponses sera bientôt disponible.
-            </p>
+            <p
+              class="diagnostic-send-status"
+              role="status"
+              data-diagnostic-target="sendStatus"
+            ></p>
+            <a
+              href="#"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener"
+              data-diagnostic-target="calendlyLink"
+              hidden
+              >Réserver ma visio</a
+            >
             <button
               type="button"
               class="btn btn-primary"
+              data-diagnostic-target="retryButton"
+              data-action="diagnostic#send"
+              hidden
+            >
+              Réessayer
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
               data-action="diagnostic#restart"
             >
               Recommencer

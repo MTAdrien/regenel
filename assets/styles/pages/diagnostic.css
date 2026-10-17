@@ -121,6 +121,18 @@
   --bs-btn-disabled-opacity: 1;
 }
 
+.diagnostic-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.diagnostic-send-status {
+  font-weight: var(--weight-medium);
+}
+
 .diagnostic-error {
   color: var(--error-color);
   font-size: var(--subtitle-size);

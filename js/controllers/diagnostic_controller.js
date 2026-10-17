@@ -3,12 +3,14 @@ import { START, QUESTIONS } from "../data/diagnostic_tree.js";
 import { uploadImage } from "../cloudinary.js";
 
 const OTHER_SEPARATOR = " : ";
+const CALENDLY_URL = "https://calendly.com/<ton-nom>/<evenement>";
 
 export default class extends Controller {
   static targets = [
     "card", "question", "hint", "answers", "answerTemplate", "imageAnswerTemplate", "form", "textInput", "textArea",
     "choices", "choiceInput", "otherInput", "checkboxTemplate", "imageCheckboxTemplate", "uploads", "uploadTemplate", "uploadInput", "uploadPreview",
-    "uploadError", "submitButton", "backButton", "summary", "summaryList",
+    "uploadError", "submitButton", "backButton", "summary", "summaryList", "sendStatus", "calendlyLink", "retryButton",
+    "honeypot",
   ];
 
   connect() {
@@ -276,6 +278,44 @@ export default class extends Controller {
 
     this.cardTarget.hidden = true;
     this.summaryTarget.hidden = false;
+    this.send();
+  }
+
+  get payload() {
+    const answerOf = (id) => this.history.find((entry) => entry.id === id)?.answer ?? "";
+    return {
+      answers: this.history.map(({ id, answer }) => ({ question: this.textFor(QUESTIONS[id]), answer: [answer].flat().join(", ") })),
+      photos: this.history.flatMap((entry) => entry.uploads ?? []).map((upload) => upload.publicId),
+      prenom: answerOf("prenom"),
+      email: answerOf("email"),
+      website: this.honeypotTarget.value,
+    };
+  }
+
+  async send() {
+    const payload = this.payload;
+    this.retryButtonTarget.hidden = true;
+    this.calendlyLinkTarget.hidden = true;
+    this.sendStatusTarget.textContent = "Envoi de ton diagnostic…";
+
+    try {
+      const response = await fetch("/api/diagnostic", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(`Envoi refusé (${response.status})`);
+
+      const calendly = new URL(CALENDLY_URL);
+      calendly.searchParams.set("name", payload.prenom);
+      calendly.searchParams.set("email", payload.email);
+      this.calendlyLinkTarget.href = calendly;
+      this.calendlyLinkTarget.hidden = false;
+      this.sendStatusTarget.textContent = "Ton diagnostic est bien envoyé ! Réserve maintenant ta visio de 30 minutes :";
+    } catch {
+      this.sendStatusTarget.textContent = "L'envoi a échoué, vérifie ta connexion.";
+      this.retryButtonTarget.hidden = false;
+    }
   }
 
   restart() {
