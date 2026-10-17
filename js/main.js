@@ -3,9 +3,11 @@ import NavbarController from "./controllers/navbar_controller.js";
 import RevealController from "./controllers/reveal_controller.js";
 import CarouselController from "./controllers/carousel_controller.js";
 import DiagnosticController from "./controllers/diagnostic_controller.js";
+import ContactController from "./controllers/contact_controller.js";
 
 const application = Application.start();
 application.register("navbar", NavbarController);
 application.register("reveal", RevealController);
 application.register("carousel", CarouselController);
 application.register("diagnostic", DiagnosticController);
+application.register("contact", ContactController);
