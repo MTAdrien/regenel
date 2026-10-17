@@ -178,24 +178,29 @@
                 <p class="card-text">0612345678</p>
               </div>
             </div>
-            <form class="contact-form" data-controller="reveal">
+            <form class="contact-form" data-controller="reveal contact" data-action="submit->contact#submit">
               <div class="mb-3">
                 <label for="contact-name" class="form-label">Nom</label>
-                <input type="text" class="form-control" id="contact-name" name="name" required>
+                <input type="text" class="form-control" id="contact-name" name="name" data-contact-target="name" maxlength="100" autocomplete="name" required>
               </div>
               <div class="mb-3">
                 <label for="contact-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="contact-email" name="email" required>
+                <input type="email" class="form-control" id="contact-email" name="email" data-contact-target="email" autocomplete="email" required >
               </div>
               <div class="mb-3">
                 <label for="contact-phone" class="form-label">Téléphone</label>
-                <input type="tel" class="form-control" id="contact-phone" name="phone">
+                <input type="tel" class="form-control" id="contact-phone" name="phone" data-contact-target="phone" maxlength="30" autocomplete="tel" >
               </div>
               <div class="mb-3">
                 <label for="contact-message" class="form-label">Message</label>
-                <textarea class="form-control" id="contact-message" name="message" rows="5" required></textarea>
+                <textarea class="form-control" id="contact-message" name="message" data-contact-target="message" rows="5" maxlength="5000" required ></textarea>
               </div>
-              <button type="submit" class="btn btn-success">Envoyer</button>
+              <div aria-hidden="true" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);" >
+                <label for="contact-website">Ne pas remplir ce champ</label>
+                <input type="text" id="contact-website" name="website" data-contact-target="website" tabindex="-1" autocomplete="off" >
+              </div>
+              <button type="submit" class="btn btn-success" data-contact-target="submit" > Envoyer </button>
+              <p class="contact-status mt-3" data-contact-target="status" role="status" aria-live="polite" ></p>
             </form>
           </div>
         </div>
