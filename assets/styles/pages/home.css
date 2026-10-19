@@ -62,14 +62,31 @@
   margin-top: var(--spacing-xl);
 }
 
+.protocol-cards .col {
+  display: flex;
+}
+
+.protocol-cards .card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .protocol-cards .card-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex-grow: 1;
+  justify-content: flex-start;
   gap: var(--spacing-xs);
 }
 
 .protocol-cards h3 {
+  text-align: center;
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.protocol-cards .card-body p {
   text-align: center;
 }
 
