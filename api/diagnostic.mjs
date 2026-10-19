@@ -28,12 +28,28 @@ function diagnosticEmail(prenom, answers, photoLinks) {
   const photos = photoLinks
     .map((link, index) => `<li><a href="${escape(link)}">Photo ${index + 1}</a></li>`)
     .join("");
-  return `<h2>Nouveau diagnostic de ${escape(prenom)}</h2><table style="border-collapse:collapse">${rows}</table><h3>Photos</h3><ul>${photos}</ul>`;
+  return `
+    <h2>Nouveau diagnostic de ${escape(prenom)}
+    </h2><table style="border-collapse:collapse">${rows}</table><h3>Photos</h3><ul>${photos}</ul>`;
 }
 
 function confirmationEmail(prenom) {
   const calendly = process.env.CALENDLY_URL;
-  return `<p>Bonjour ${escape(prenom)},</p><p>Merci, ton diagnostic est bien reçu. Je l'étudie avec attention avant notre échange en visio.</p>${calendly ? `<p>Si ce n'est pas encore fait, tu peux réserver ton créneau ici : <a href="${escape(calendly)}">réserver ma visio</a>.</p>` : ""}<p>À très vite,<br>Regenel</p>`;
+  return `
+    <h2>Demande de diagnostic</h2>
+
+    <p>Bonjour ${escape(prenom)},</p>
+
+    <p>
+      Merci pour la confiance accordée, ton diagnostic est bien reçu.
+      Je l'étudie avec attention avant notre échange en visio.
+    </p>
+
+    ${calendly ? `<p>
+      Si ce n'est pas encore fait, tu peux réserver ton créneau ici : <a href="${escape(calendly)}">réserver ma visio</a>.
+      </p>` : ""}
+
+    <p>À très vite,<br>Laëticia praticienne Regenel</p>`;
 }
 
 export default async function handler(request, response) {

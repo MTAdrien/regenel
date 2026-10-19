@@ -27,7 +27,7 @@ function notificationEmail(nom, email, telephone, message) {
 
 function confirmationEmail(nom) {
   return `
-    <h2>Nous avons bien reçu votre message</h2>
+    <h2>Confirmation de prise de contact</h2>
 
     <p>Bonjour ${escapeHtml(nom)},</p>
 
@@ -40,7 +40,7 @@ function confirmationEmail(nom) {
       Nous reviendrons vers vous dans les meilleurs délais.
     </p>
 
-    <p>À bientôt,<br>L'équipe Regenel</p>
+    <p>À bientôt,<br>Laëticia praticienne Regenel</p>
   `;
 }
 
