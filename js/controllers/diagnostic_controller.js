@@ -3,7 +3,7 @@ import { START, QUESTIONS } from "../data/diagnostic_tree.js";
 import { uploadImage } from "../cloudinary.js";
 
 const OTHER_SEPARATOR = " : ";
-const CALENDLY_URL = "https://calendly.com/<ton-nom>/<evenement>";
+const CALENDLY_URL = "https://calendly.com/regenel-consultation/regenel-bilan-capillaire";
 
 export default class extends Controller {
   static targets = [
