@@ -97,6 +97,18 @@
   resize: none;
 }
 
+.contact-status {
+  font-weight: var(--weight-medium);
+}
+
+.contact-status.is-success {
+  color: var(--text-primary);
+}
+
+.contact-status.is-error {
+  color: var(--error-color);
+}
+
 @media (min-width: 768px) {
   .contact {
     flex-direction: row;
