@@ -35,7 +35,7 @@ export default class extends Controller {
         body: JSON.stringify(payload),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (!response.ok || !result.ok) {
         throw new Error(result.error || "Impossible d'envoyer votre message.");
