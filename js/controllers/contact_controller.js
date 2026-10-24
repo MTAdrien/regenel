@@ -38,12 +38,12 @@ export default class extends Controller {
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok || !result.ok) {
-        throw new Error(result.error || "Impossible d'envoyer votre message.");
+        throw new Error(result.error || "Impossible d'envoyer ton message.");
       }
 
       this.statusTarget.textContent = result.confirmationSent === false
-        ? "Votre message a bien été transmis à Regenel."
-        : "Votre message a bien été envoyé. Merci de nous avoir contactés !";
+        ? "Ton message m'a bien été transmis."
+        : "Ton message est bien envoyé, merci ! Je reviens vers toi rapidement.";
       this.statusTarget.classList.add("is-success");
       this.element.reset();
     } catch (error) {

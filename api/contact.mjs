@@ -33,11 +33,11 @@ function confirmationEmail(nom) {
 
     <p>
       Merci d'avoir contacté Regenel.
-      Votre message a bien été transmis.
+      Ton message m'a bien été transmis.
     </p>
 
     <p>
-      Nous reviendrons vers vous dans les meilleurs délais.
+      Je reviens vers toi dans les meilleurs délais.
     </p>
 
     <p>À bientôt,<br>Laëticia praticienne Regenel</p>
@@ -84,7 +84,7 @@ export default async function handler(request, response) {
     const confirmation = await resend.emails.send({
       from: SENDER,
       to: emailClient,
-      subject: "Nous avons bien reçu votre message",
+      subject: "J'ai bien reçu ton message",
       html: confirmationEmail(nomClient),
     });
 
@@ -101,6 +101,6 @@ export default async function handler(request, response) {
   } catch (error) {
     console.error("contact:", error?.message ?? "Erreur inconnue");
 
-    return response.status(500).json({ error: "L'envoi de votre message a échoué. Merci de réessayer.", });
+    return response.status(500).json({ error: "L'envoi de ton message a échoué. Merci de réessayer.", });
   }
 }
