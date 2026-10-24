@@ -55,7 +55,7 @@ export const QUESTIONS = {
     type: "multiple",
     answers: [
       { label: "Ligne frontale", image: `${IMAGES}/homme-ligne-frontale` },
-      { label: "Golfes temporaux", image: `${IMAGES}/homme-golfes-temporaux` },
+      { label: "Golfes temporaux", image: `${IMAGES}/homme-golfes-temporaux1` },
       { label: "Toupet", image: `${IMAGES}/homme-toupet` },
       { label: "Vertex", image: `${IMAGES}/homme-vertex` },
       { label: "Couronne", image: `${IMAGES}/homme-couronne`, exclusive: true },
@@ -68,10 +68,10 @@ export const QUESTIONS = {
     hint: ZONE_HINT,
     type: "multiple",
     answers: [
-      { label: "Barbe complète", image: `${IMAGES}/barbe-complete`, exclusive: true },
-      { label: "Joues", image: `${IMAGES}/barbe-joue` },
-      { label: "Bouc", image: `${IMAGES}/barbe-bouc` },
-      { label: "Moustache", image: `${IMAGES}/barbe-moustache` },
+      { label: "Barbe complète", image: `${IMAGES}/barbe-complete1`, exclusive: true },
+      { label: "Joues", image: `${IMAGES}/barbe-joue1` },
+      { label: "Bouc", image: `${IMAGES}/barbe-bouc1` },
+      { label: "Moustache", image: `${IMAGES}/barbe-moustache1` },
     ],
     next: "end",
   },
